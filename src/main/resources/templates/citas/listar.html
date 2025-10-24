@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Citas</title>
+    <link rel="stylesheet" th:href="@{/assets/css/estilos.css}">
+</head>
+<body class="modo-oscuro">
+    <div class="container">
+        <h1>Lista de Citas</h1>
+        <a href="/citas/nueva" class="btn-guardar">➕ Nueva Cita</a>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Usuario</th>
+                    <th>Profesional</th>
+                    <th>Servicio</th>
+                    <th>Fecha y Hora</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="c : ${citas}">
+                    <td th:text="${c.id}"></td>
+                    <td th:text="${c.usuario.nombre}"></td>
+                    <td th:text="${c.profesional.especialidad}"></td>
+                    <td th:text="${c.servicio.nombre}"></td>
+                    <td th:text="${#temporals.format(c.fechaHora, 'yyyy-MM-dd HH:mm')}"></td>
+                    <td th:text="${c.estado}"></td>
+                    <td>
+                        <a th:href="@{'/citas/eliminar/' + ${c.id}}"
+                           onclick="return confirm('¿Deseas eliminar esta cita?')">🗑️ Eliminar</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <a href="/" class="btn-cancelar">Volver al inicio</a>
+    </div>
+</body>
+</html>
