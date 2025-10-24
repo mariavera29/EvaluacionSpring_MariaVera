@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Profesionales</title>
+    <link rel="stylesheet" th:href="@{/assets/css/estilos.css}">
+</head>
+<body>
+    <h1>Lista de Profesionales</h1>
+
+    <a href="/profesionales/nuevo" class="btn">Nuevo Profesional</a>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Especialidad</th>
+                <th>Horario Disponible</th>
+                <th>Usuario</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="prof : ${profesionales}">
+                <td th:text="${prof.id}"></td>
+                <td th:text="${prof.especialidad}"></td>
+                <td th:text="${#temporals.format(prof.horarioDisponible, 'yyyy-MM-dd HH:mm')}"></td>
+                <td th:text="${prof.usuario != null ? prof.usuario.nombre : 'Sin asignar'}"></td>
+                <td>
+                    <a th:href="@{'/profesionales/editar/' + ${prof.id}}">Editar</a> |
+                    <a th:href="@{'/profesionales/eliminar/' + ${prof.id}}"
+                       onclick="return confirm('¿Seguro que deseas eliminar este profesional?')">Eliminar</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="/" class="btn-volver">Volver al inicio</a>
+</body>
+</html>

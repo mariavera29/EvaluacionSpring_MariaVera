@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${profesional.id} != null ? 'Editar Profesional' : 'Nuevo Profesional'"></title>
+    <link rel="stylesheet" th:href="@{/assets/css/estilos.css}">
+</head>
+<body>
+    <h1 th:text="${profesional.id} != null ? 'Editar Profesional' : 'Nuevo Profesional'"></h1>
+
+    <form th:action="@{/profesionales}" th:object="${profesional}" method="post">
+        <input type="hidden" th:field="*{id}">
+
+        <label>Especialidad:</label>
+        <input type="text" th:field="*{especialidad}" required>
+
+        <label>Horario Disponible:</label>
+        <input type="datetime-local" th:field="*{horarioDisponible}" required>
+
+        <label>Usuario asociado:</label>
+		<select name="usuarioId" required>
+		    <option value="">-- Selecciona un usuario --</option>
+		    <option th:each="u : ${usuarios}" 
+		            th:value="${u.id}" 
+		            th:text="${u.nombre}"
+		            th:selected="${profesional.usuario != null and profesional.usuario.id == u.id}">
+		    </option>
+		</select>
+>
+
+        <button type="submit">Guardar</button>
+        <a href="/profesionales" class="btn-cancelar">Cancelar</a>
+    </form>
+</body>
+</html>

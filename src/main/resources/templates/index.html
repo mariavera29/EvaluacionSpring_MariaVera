@@ -1,21 +1,29 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Inicio</title>
-    <link rel="stylesheet" th:href="@{/assets/css/index.css}">
-</head>
-<body>
-    <div class="container">
-        <h1>Sistema de Citas Médicas</h1>
-        <p>Bienvenido al sistema. Desde aquí puedes acceder a la gestión de usuarios y otros módulos.</p>
 
-        <div class="menu">
-            <a class="btn" th:href="@{/usuarios/lista}">Gestion de usuarios</a>
-            <a class="btn-secondary" href="#">Profesionales </a>
-            <a class="btn-secondary" href="#">Servicios </a>
-            <a class="btn-secondary" href="#">Citas </a>
-        </div>
-    </div>
+<head>
+	<meta charset="UTF-8">
+	<title>Inicio</title>
+	<link rel="stylesheet" th:href="@{/assets/css/index.css}">
+</head>
+
+<body>
+	<div class="container">
+		<h1>Sistema de Citas Médicas</h1>
+		<p>Bienvenido al sistema. Desde aquí puedes acceder a la gestión de usuarios y otros módulos.</p>
+
+		<div class="menu">
+			<a class="btn" th:href="@{/usuarios/lista}">Gestion de usuarios</a>
+			<a class="btn-secondary" th:href="@{/profesionales}">Gestion de Profesional</a>
+			<a class="btn-secondary" href="#">Servicios </a>
+			<a class="btn-secondary" href="#">Citas </a>
+		</div>
+	</div>
+
+
+	<footer>
+		<p>© 2025 — Sistema de Gestión Médica</p>
+	</footer>
 </body>
+
 </html>
