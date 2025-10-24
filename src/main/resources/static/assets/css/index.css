@@ -1,0 +1,68 @@
+/* === Reset básico === */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+/* === Fondo general === */
+body {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    color: #f1f5f9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+/* === Contenedor principal === */
+.container {
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.08);
+    padding: 3rem;
+    border-radius: 20px;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.4);
+    width: 90%;
+    max-width: 600px;
+}
+
+/* === Título principal === */
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #38bdf8;
+}
+
+/* === Subtítulo o descripción === */
+p {
+    font-size: 1.1rem;
+    color: #cbd5e1;
+    margin-bottom: 2rem;
+}
+
+/* === Enlaces estilo botón === */
+a {
+    display: inline-block;
+    margin: 10px;
+    padding: 12px 25px;
+    background-color: #0ea5e9;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 10px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+a:hover {
+    background-color: #38bdf8;
+    transform: scale(1.05);
+}
+
+/* === Footer simple === */
+footer {
+    margin-top: 2rem;
+    font-size: 0.9rem;
+    color: #94a3b8;
+}
