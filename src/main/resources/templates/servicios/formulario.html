@@ -2,31 +2,46 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Formulario Usuario</title>
+    <title th:text="${servicio.id} != null ? 'Editar Servicio' : 'Nuevo Servicio'"></title>
     <link rel="stylesheet" th:href="@{/assets/css/estilos.css}">
 </head>
-<body>
-    <div class="container">
-        <h1 th:text="${usuario.id == null} ? 'Nuevo Usuario' : 'Editar Usuario'"></h1>
+<body class="modo-oscuro">
 
-        <form th:action="@{/usuarios/guardar}" th:object="${usuario}" method="post">
+    <div class="container formulario">
+        <h1 th:text="${servicio.id} != null ? 'Editar Servicio' : 'Nuevo Servicio'"></h1>
+
+        <form th:action="@{/servicios}" th:object="${servicio}" method="post" class="formulario-crud">
             <input type="hidden" th:field="*{id}">
 
-            <label>Nombre:</label>
-            <input type="text" th:field="*{nombre}" required>
+            <div class="campo">
+                <label>Nombre:</label>
+                <input type="text" th:field="*{nombre}" placeholder="Ej: Consulta general" required>
+            </div>
 
-            <label>Email:</label>
-            <input type="email" th:field="*{email}" required>
+            <div class="campo">
+                <label>Descripción:</label>
+                <textarea th:field="*{descripcion}" placeholder="Breve descripción del servicio" required></textarea>
+            </div>
 
-            <label>Contraseña:</label>
-            <input type="password" th:field="*{password}" required>
+            <div class="campo">
+                <label>Precio:</label>
+                <input type="number" step="0.01" th:field="*{precio}" required>
+            </div>
 
-            <label>Teléfono:</label>
-            <input type="text" th:field="*{telefono}" required>
+            <div class="campo">
+                <label>Duración:</label>
+                <input type="text" th:field="*{duracion}" placeholder="Ej: 30 minutos" required>
+            </div>
 
-            <button type="submit" class="btn">Guardar</button>
-            <a class="btn-secondary" th:href="@{/usuarios/lista}">Cancelar</a>
+            <div class="acciones">
+                <button type="submit" class="btn-guardar">💾 Guardar</button>
+                <a href="/servicios" class="btn-cancelar">Cancelar</a>
+            </div>
         </form>
     </div>
+
+    <footer>
+        <p>© 2025 — Sistema de Gestión Médica</p>
+    </footer>
 </body>
 </html>

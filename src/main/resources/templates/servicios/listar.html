@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Servicios</title>
+    <link rel="stylesheet" th:href="@{/assets/css/estilos.css}">
+</head>
+<body class="modo-oscuro">
+
+    <div class="container">
+        <h1>Lista de Servicios</h1>
+        <a href="/servicios/nuevo" class="btn-guardar">➕ Nuevo Servicio</a>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Descripción</th>
+                    <th>Precio</th>
+                    <th>Duración</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="s : ${servicios}">
+                    <td th:text="${s.id}"></td>
+                    <td th:text="${s.nombre}"></td>
+                    <td th:text="${s.descripcion}"></td>
+                    <td th:text="${s.precio}"></td>
+                    <td th:text="${s.duracion}"></td>
+                    <td>
+                        <a th:href="@{'/servicios/editar/' + ${s.id}}">✏️ Editar</a> |
+                        <a th:href="@{'/servicios/eliminar/' + ${s.id}}"
+                           onclick="return confirm('¿Seguro que deseas eliminar este servicio?')">Eliminar</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <a href="/" class="btn-cancelar">Volver al inicio</a>
+    </div>
+
+    <footer>
+        <p>© 2025 — Sistema de Gestión Médica</p>
+    </footer>
+</body>
+</html>

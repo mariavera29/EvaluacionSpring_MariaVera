@@ -1,11 +1,8 @@
 package com.spring.service;
 
 import java.util.List;
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.spring.model.Servicio;
 import com.spring.repository.ServicioRepository;
 
@@ -19,12 +16,12 @@ public class ServicioService {
         return servicioRepository.findAll();
     }
 
-    public Optional<Servicio> buscarPorId(Integer id) {
-        return servicioRepository.findById(id);
-    }
-
     public Servicio guardar(Servicio servicio) {
         return servicioRepository.save(servicio);
+    }
+
+    public Servicio obtenerPorId(Integer id) {
+        return servicioRepository.findById(id).orElse(null);
     }
 
     public void eliminar(Integer id) {
